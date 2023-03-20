@@ -23,7 +23,7 @@ router.get("/", (_req, res) => {
             id: video.id,
             image: video.image,
             title: video.title,
-            channel: video.channel,
+            channel: video.channel, 
         };
     });
     console.log("test");
@@ -35,13 +35,13 @@ router.post("/", (req, res) => {
     const newVideo = {
         id: uuidv4(),
         title: req.body.title,
-        channel: req.body.channel,
-        image: "",
+        channel: "Dumb Dumber Channel",
+        image: "/Upload-video-preview.jpg",
         description: req.body.description,
         views:0,
         likes:0,
         duration: "4.51",
-        video: "",
+        video: "https://project-2-api.herokuapp.com/stream",
         timestamp: Date.now(),
         comments: [],
     };
@@ -50,6 +50,8 @@ router.post("/", (req, res) => {
     writeVideos(videosData);
     res.status(201).send();
 })
+
+
 
 router.get("/:videoId", (req, res) => {
   const videosData = readVideos();
